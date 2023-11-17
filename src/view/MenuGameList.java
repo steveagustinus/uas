@@ -85,7 +85,16 @@ public class MenuGameList extends JFrame {
             buttonBuy.setName("buy_" + i);
             buttonBuy.setLocation(5, 85);
             buttonBuy.setSize(140, 30);
-            
+
+            buttonBuy.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    
+                }
+                
+            });
+
             panel.add(buttonBuy);
         }
 
