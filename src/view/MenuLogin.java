@@ -52,6 +52,7 @@ public class MenuLogin extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 if (controller.login(fieldEmail.getText(), fieldPassword.getText()) != null) {
                     JOptionPane.showMessageDialog(null, "Login berhasil!", "Login", JOptionPane.PLAIN_MESSAGE);
+                    new MenuGameList();
                     close();
                 } else {
                     JOptionPane.showMessageDialog(null, "Email atau password tidak cocok!", "Login", JOptionPane.ERROR_MESSAGE);
