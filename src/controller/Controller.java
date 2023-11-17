@@ -30,50 +30,17 @@ public class Controller {
             ResultSet result = statement.executeQuery("SELECT * FROM `transactions` WHERE user_id=" + idUser + " AND id_game=" + idGame);
 
             if (!result.isBeforeFirst()) {
-                return null;
-            }
-
-            while(result.next()) {
-                Games game = new Games(
-                    result.getInt("id"),
-                    result.getString("name"),
-                    result.getString("genre"),
-                    result.getInt("price")
-                );
-                games.add(game);
+                return false;
             }
 
             result.close();
             conn.close();
             
-            return games.toArray(new Games[games.size()]);
-    }
-
-    public int buyGame(String idUser, String idGame) {
-        try {
-            conn.open();
-
-            Statement statement = conn.connection.createStatement();
-            ResultSet result = statement.executeQuery("SELECT * FROM `games`");
-
-            if (!result.isBeforeFirst()) {
-                return null;
-            }
-
-            while(result.next()) {
-                Games game = new Games(
-                    result.getInt("id"),
-                    result.getString("name"),
-                    result.getString("genre"),
-                    result.getInt("price")
-                );
-                games.add(game);
-            }
-
-            result.close();
-            conn.close();
-            
-            return games.toArray(new Games[games.size()]);
+            return false;
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            return false;
+        }
     }
 
     public Games[] getGames() {
