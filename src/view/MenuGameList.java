@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import controller.Controller;
@@ -46,10 +47,10 @@ public class MenuGameList extends JFrame {
         for (int i = 0; i < games.length; i++) {
             JPanel panel = new JPanel();
             panel.setLayout(null);
-            panel.setSize(50, 100);
+            panel.setSize(150, 300);
 
             if (i == 0) {
-                panel.setLocation(5, 5);
+                panel.setLocation(5, 40);
             } else {
                 panel.setLocation(
                     panels[i - 1].getX() + panels[i - 1].getWidth() + 5,
@@ -65,7 +66,18 @@ public class MenuGameList extends JFrame {
             }
 
             panel.setBackground(Color.CYAN);
+            panels[i] = panel;
             this.add(panel);
+
+            JLabel labelNama = new JLabel(games[i].getName());
+            labelNama.setLocation(5, 5);
+
+            panel.add(labelNama);
+
+            JLabel labelHarga = new JLabel(games[i].getHarga());
+            labelHarga.setLocation(5, 45);
+
+            panel.add(labelHarga);
         }
 
         this.add(buttonTransaction);
