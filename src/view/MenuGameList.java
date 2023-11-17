@@ -71,11 +71,13 @@ public class MenuGameList extends JFrame {
 
             JLabel labelNama = new JLabel(games[i].getName());
             labelNama.setLocation(5, 5);
+            labelNama.setSize(140, 30);
 
             panel.add(labelNama);
 
             JLabel labelHarga = new JLabel(String.valueOf(games[i].getPrice()));
-            labelHarga.setLocation(5, 45);
+            labelHarga.setLocation(5, 50);
+            labelHarga.setSize(140, 30);
 
             panel.add(labelHarga);
         }
