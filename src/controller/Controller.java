@@ -2,8 +2,10 @@ package controller;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import model.Users;
+import model.Games;
 
 public class Controller {
     public class Table {
@@ -20,6 +22,39 @@ public class Controller {
 
     public Controller() { }
 
+    public Games[] getGames() {
+        ArrayList<Games> games = new ArrayList<>();
+
+        try {
+            conn.open();
+
+            Statement statement = conn.connection.createStatement();
+            ResultSet result = statement.executeQuery("SELECT * FROM `games`");
+
+            if (!result.isBeforeFirst()) {
+                return null;
+            }
+
+            while(result.next()) {
+                Games game = new Games(
+                    result.getInt("id"),
+                    result.getString("name"),
+                    result.getString("genre"),
+                    result.getInt("price")
+                );
+                games.add(game);
+            }
+
+            result.close();
+            conn.close();
+            
+            return games.toArray(new Games[games.size()]);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            return null;
+        }
+    }
+
     public Users login(String email, String password) {
         try {
             conn.open();
@@ -32,7 +67,6 @@ public class Controller {
             Users user = null;
 
             if (!result.isBeforeFirst()) {
-                System.out.println("here");
                 return null;
             }
 
