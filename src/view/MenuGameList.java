@@ -47,7 +47,7 @@ public class MenuGameList extends JFrame {
         for (int i = 0; i < games.length; i++) {
             JPanel panel = new JPanel();
             panel.setLayout(null);
-            panel.setSize(150, 300);
+            panel.setSize(150, 180);
 
             if (i == 0) {
                 panel.setLocation(5, 40);
@@ -80,6 +80,13 @@ public class MenuGameList extends JFrame {
             labelHarga.setSize(140, 30);
 
             panel.add(labelHarga);
+
+            JButton buttonBuy = new JButton("Buy");
+            buttonBuy.setName("buy_" + i);
+            buttonBuy.setLocation(5, 85);
+            buttonBuy.setSize(140, 30);
+            
+            panel.add(buttonBuy);
         }
 
         this.add(buttonTransaction);
